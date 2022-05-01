@@ -15,12 +15,10 @@ task("create", "Creates new polling")
     const tx = await voting.createPolling(candidatesArray);
 
     // for tests
-    // const rc = await tx.wait();
-    // const createdEventData = rc.events?.find((e: any) => {
-    //   return e.event === "CreatedEvent";
-    // });
-    // createdEventData &&
-    //   console.log(`\nPolling id: ${parseInt(createdEventData.args.pollingId)}`);
-
-    console.log("Created");
+    const rc = await tx.wait();
+    const createdEventData = rc.events?.find((e: any) => {
+      return e.event === "CreatedEvent";
+    });
+    createdEventData &&
+      console.log(`\nPolling id: ${parseInt(createdEventData.args.pollingId)}`);
   });
