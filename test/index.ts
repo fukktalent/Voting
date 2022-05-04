@@ -30,6 +30,13 @@ describe("Voting", function () {
       expect(polling.winner).to.eql(ethers.constants.AddressZero);
     });
 
+    it("Should reverted with less two candidates error", async function () {
+      await expect(
+        voting
+          .createPolling([acc1.address])
+      ).to.be.revertedWith("Less two candidates");
+    });
+
     it("Should reverted with no owner error", async function () {
       await expect(
         voting

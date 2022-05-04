@@ -323,7 +323,7 @@ export interface Voting extends BaseContract {
     createPolling(
       _candidates: string[],
       overrides?: CallOverrides
-    ): Promise<BigNumber>;
+    ): Promise<void>;
 
     fee(overrides?: CallOverrides): Promise<BigNumber>;
 

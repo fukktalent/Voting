@@ -51,7 +51,8 @@ contract Voting is Ownable {
     /**
      * @dev "Creates" polling and sets candidates
      */
-    function createPolling(address[] calldata _candidates) external onlyOwner returns (uint) {
+    function createPolling(address[] calldata _candidates) external onlyOwner {
+        require(_candidates.length > 1, "Less two candidates");
         uint pollingId = numPollings;
         Polling storage polling = pollings[pollingId];
 
